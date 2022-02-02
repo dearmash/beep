@@ -6,7 +6,7 @@ led_board_height=1;
 board_radius=78/2;
 board_height=1;
 
-through_hole_radius=2.75;
+through_hole_radius=2.65;
 screw_hole_radius=1.5;
 
 intersection() {
@@ -33,28 +33,28 @@ intersection() {
   
     // top left through hole
     translate([
-        -(board_radius-(2.25+through_hole_radius)), 
-        (board_radius-(3.25+through_hole_radius)),
+        -(board_radius-(3.75+through_hole_radius)), 
+        (board_radius-(4.75+through_hole_radius)),
         -1]) 
       linear_extrude(board_height+2)
       circle(through_hole_radius);
     // top right through hole
     translate([
-        (board_radius-(2.25+through_hole_radius)), 
-        (board_radius-(3.25+through_hole_radius)),
+        (board_radius-(3.75+through_hole_radius)), 
+        (board_radius-(4.75+through_hole_radius)),
         -1]) 
       linear_extrude(board_height+2)
       circle(through_hole_radius);
     // bottom left through hole
     translate([
-        -(board_radius-(5.5+through_hole_radius)), 
+        -(board_radius-(5.75+through_hole_radius)), 
         -(board_radius-(3+through_hole_radius)),
         -1]) 
       linear_extrude(board_height+2)
       circle(through_hole_radius);
     // bottom right through hole
     translate([
-        (board_radius-(5.5+through_hole_radius)), 
+        (board_radius-(5.75+through_hole_radius)), 
         -(board_radius-(3+through_hole_radius)),
         -1])
       linear_extrude(board_height+2)
@@ -62,7 +62,7 @@ intersection() {
     // bottom middle through hole
     translate([
         0, 
-        -(board_radius-(6+through_hole_radius)),
+        -(board_radius-(5.75+through_hole_radius)),
         -1]) 
       linear_extrude(board_height+2)
       circle(through_hole_radius);
@@ -88,7 +88,7 @@ intersection() {
     linear_extrude(board_height+2)
     union() {
       // bottom middle through hole support
-      translate([0, -(board_radius-(6+through_hole_radius)), 0])
+      translate([0, -(board_radius-(5.75+through_hole_radius)), 0])
       circle(through_hole_radius+3);
       difference() {
         circle(board_radius+13);
@@ -104,6 +104,6 @@ module led_board() {
     circle(led_board_radius);
   linear_extrude(board_height+2)
     square(5.5, center=true);
-  translate([0, 0, 2])
-    cube([2*led_board_radius, 5, board_height], center=true);
+  translate([-led_board_radius, -3.25/2, 0])
+    cube([2*led_board_radius, 3.25, board_height+2]);
 }
